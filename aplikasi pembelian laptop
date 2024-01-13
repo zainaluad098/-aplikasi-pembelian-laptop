@@ -7,7 +7,6 @@ INT 21h
 MOV AH, 01h
 INT 21h
 
-ngulang:
 CMP AL, '1'
 JE Laptop1
 
