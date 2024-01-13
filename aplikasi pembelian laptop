@@ -73,7 +73,7 @@ Stop:
     INT 20h
 
 Menu            DB 0Dh, 0Ah, "==============================", 0Dh, 0Ah
-                DB "   Selamat Datang di Pemilih Laptop  ", 0Dh, 0Ah
+                DB "   Selamat Datang di toko laptop  ", 0Dh, 0Ah
                 DB "==============================", 0Dh, 0Ah
                 DB "1. Laptop A", 0Dh, 0Ah
                 DB "2. Laptop B", 0Dh, 0Ah
@@ -94,4 +94,4 @@ LaptopB         DB "  Anda memilih Laptop B.  terimakasih!", 0Dh, 0Ah, "$"
 LaptopC         DB "  Anda memilih Laptop C.  terimakasih!", 0Dh, 0Ah, "$"
 LaptopD         DB "  Anda memilih Laptop D.  terimakasih!", 0Dh, 0Ah, "$"
 LaptopE         DB "  Anda memilih Laptop E.  terimakasih!", 0Dh, 0Ah, "$"
-Nope            DB "  Input tidak valid. Silakan masukkan nomor antara 1 dan 5.  mohon restart applikasi", 0Dh, 0Ah, "$"
+Nope            DB "  Input tidak valid. Silakan masukkan nomor antara 1 dan 5.  mohon restart applikasi", 0Dh, 0Ah, "$"S
