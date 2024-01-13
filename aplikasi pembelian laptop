@@ -1,61 +1,61 @@
-ORG 100h ; Origin, standard for COM files
+ORG 100h
 
-MOV AH, 09h ; Function to print string
-MOV DX, OFFSET MenuMsg ; Load address of the menu message
-INT 21h ; Call DOS interrupt to print the menu
+MOV AH, 09h
+MOV DX, OFFSET Menu
+INT 21h
 
-MOV AH, 01h ; Function to read a character
-INT 21h ; Call DOS interrupt to read a character
+MOV AH, 01h
+INT 21h
 
-CMP AL, '1' ; Compare the input with '1'
-JE Laptop1Selected ; Jump to Laptop1Selected if equal
+ngulang:
+CMP AL, '1'
+JE Laptop1
 
-CMP AL, '2' ; Compare the input with '2'
-JE Laptop2Selected ; Jump to Laptop2Selected if equal
+CMP AL, '2'
+JE Laptop2
 
-CMP AL, '3' ; Compare the input with '3'
-JE Laptop3Selected ; Jump to Laptop3Selected if equal
+CMP AL, '3'
+JE Laptop3
 
-CMP AL, '4' ; Compare the input with '4'
-JE Laptop4Selected ; Jump to Laptop4Selected if equal
+CMP AL, '4'
+JE Laptop4
 
-CMP AL, '5' ; Compare the input with '5'
-JE Laptop5Selected ; Jump to Laptop5Selected if equal
+CMP AL, '5'
+JE Laptop5
 
-JMP InvalidInput ; Jump to InvalidInput if none of the above conditions met
+JMP SalahInput
 
-Laptop1Selected:
-    MOV DX, OFFSET Laptop1Msg ; Load address of Laptop 1 message
-    JMP DisplayItem ; Jump to common display routine
+Laptop1:
+    MOV DX, OFFSET LaptopA
+    JMP Stop
 
-Laptop2Selected:
-    MOV DX, OFFSET Laptop2Msg ; Load address of Laptop 2 message
-    JMP DisplayItem ; Jump to common display routine
+Laptop2:
+    MOV DX, OFFSET LaptopB
+    JMP Stop
 
-Laptop3Selected:
-    MOV DX, OFFSET Laptop3Msg ; Load address of Laptop 3 message
-    JMP DisplayItem ; Jump to common display routine
-
+Laptop3:
+    MOV DX, OFFSET LaptopC
+    JMP Stop
 Laptop4Selected:
-    MOV DX, OFFSET Laptop4Msg ; Load address of Laptop 4 message
-    JMP DisplayItem ; Jump to common display routine
+    MOV DX, OFFSET LaptopD
+    JMP Stop
 
-Laptop5Selected:
-    MOV DX, OFFSET Laptop5Msg ; Load address of Laptop 5 message
-    JMP DisplayItem ; Jump to common display routine
+Laptop5:
+    MOV DX, OFFSET LaptopE
+    JMP Stop
 
-InvalidInput:
-    MOV DX, OFFSET InvalidMsg ; Load address of invalid input message
-    JMP DisplayItem ; Jump to common display routine
+SalahInput:
+    MOV DX, OFFSET Nope
+    JMP Stop
 
-DisplayItem:
-    MOV AH, 09h ; Function to print string
-    INT 21h ; Call DOS interrupt to print the selected item message
+Stop:
+    MOV AH, 09h
+    INT 21h
 
-    MOV AH, 20h ; DOS function to terminate the program
-    INT 20h ; Call DOS interrupt to terminate the program
+    MOV AH, 20h
+    INT 20h
 
-MenuMsg DB 0Dh, 0Ah, "==============================", 0Dh, 0Ah
+Menu    DB 0Dh, 0Ah, "==============================", 0Dh, 0Ah
         DB "   Selamat Datang di Pemilih Laptop  ", 0Dh, 0Ah
         DB "==============================", 0Dh, 0Ah
         DB "1. Laptop A", 0Dh, 0Ah
@@ -66,9 +66,9 @@ MenuMsg DB 0Dh, 0Ah, "==============================", 0Dh, 0Ah
         DB "==============================", 0Dh, 0Ah
         DB "Masukkan nomor laptop (1-5): $"
 
-Laptop1Msg DB "Anda memilih Laptop A.", 0Dh, 0Ah, "$"
-Laptop2Msg DB "Anda memilih Laptop B.", 0Dh, 0Ah, "$"
-Laptop3Msg DB "Anda memilih Laptop C.", 0Dh, 0Ah, "$"
-Laptop4Msg DB "Anda memilih Laptop D.", 0Dh, 0Ah, "$"
-Laptop5Msg DB "Anda memilih Laptop E.", 0Dh, 0Ah, "$"
-InvalidMsg DB "Input tidak valid. Silakan masukkan nomor antara 1 dan 5.", 0Dh, 0Ah, "$"
+LaptopA DB "Anda memilih Laptop A.", 0Dh, 0Ah, "$"
+LaptopB DB "Anda memilih Laptop B.", 0Dh, 0Ah, "$"
+LaptopC DB "Anda memilih Laptop C.", 0Dh, 0Ah, "$"
+LaptopD DB "Anda memilih Laptop D.", 0Dh, 0Ah, "$"
+LaptopE DB "Anda memilih Laptop E.", 0Dh, 0Ah, "$"
+Nope DB "Input tidak valid. Silakan masukkan nomor antara 1 dan 5.", 0Dh, 0Ah, "$"
