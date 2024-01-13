@@ -1,6 +1,23 @@
 ORG 100h
 
 MOV AH, 09h
+MOV DX, OFFSET InputNama
+INT 21h
+
+MOV AH, 0Ah
+MOV DX, OFFSET Nama
+INT 21h
+
+MOV AH, 09h
+MOV DX, OFFSET InputAlamat
+INT 21h
+
+MOV AH, 0Ah
+MOV DX, OFFSET Alamat
+INT 21h
+
+
+MOV AH, 09h
 MOV DX, OFFSET Menu
 INT 21h
 
@@ -35,7 +52,8 @@ Laptop2:
 Laptop3:
     MOV DX, OFFSET LaptopC
     JMP Stop
-Laptop4Selected:
+
+Laptop4:
     MOV DX, OFFSET LaptopD
     JMP Stop
 
@@ -54,20 +72,26 @@ Stop:
     MOV AH, 20h
     INT 20h
 
-Menu    DB 0Dh, 0Ah, "==============================", 0Dh, 0Ah
-        DB "   Selamat Datang di Pemilih Laptop  ", 0Dh, 0Ah
-        DB "==============================", 0Dh, 0Ah
-        DB "1. Laptop A", 0Dh, 0Ah
-        DB "2. Laptop B", 0Dh, 0Ah
-        DB "3. Laptop C", 0Dh, 0Ah
-        DB "4. Laptop D", 0Dh, 0Ah
-        DB "5. Laptop E", 0Dh, 0Ah
-        DB "==============================", 0Dh, 0Ah
-        DB "Masukkan nomor laptop (1-5): $"
+Menu            DB 0Dh, 0Ah, "==============================", 0Dh, 0Ah
+                DB "   Selamat Datang di Pemilih Laptop  ", 0Dh, 0Ah
+                DB "==============================", 0Dh, 0Ah
+                DB "1. Laptop A", 0Dh, 0Ah
+                DB "2. Laptop B", 0Dh, 0Ah
+                DB "3. Laptop C", 0Dh, 0Ah
+                DB "4. Laptop D", 0Dh, 0Ah
+                DB "5. Laptop E", 0Dh, 0Ah
+                DB "==============================", 0Dh, 0Ah
+                DB "Masukkan nomor laptop (1-5): $"
 
-LaptopA DB "Anda memilih Laptop A.", 0Dh, 0Ah, "$"
-LaptopB DB "Anda memilih Laptop B.", 0Dh, 0Ah, "$"
-LaptopC DB "Anda memilih Laptop C.", 0Dh, 0Ah, "$"
-LaptopD DB "Anda memilih Laptop D.", 0Dh, 0Ah, "$"
-LaptopE DB "Anda memilih Laptop E.", 0Dh, 0Ah, "$"
-Nope DB "Input tidak valid. Silakan masukkan nomor antara 1 dan 5.", 0Dh, 0Ah, "$"
+InputNama DB "Masukkan nama Anda: $",
+InputAlamat DB "       Masukkan alamat Anda: $"
+
+Nama DB 10 DUP ('$')
+Alamat DB 10 DUP ('$')
+
+LaptopA         DB "  Anda memilih Laptop A.  terimakasih!", 0Dh, 0Ah, "$"
+LaptopB         DB "  Anda memilih Laptop B.  terimakasih!", 0Dh, 0Ah, "$"
+LaptopC         DB "  Anda memilih Laptop C.  terimakasih!", 0Dh, 0Ah, "$"
+LaptopD         DB "  Anda memilih Laptop D.  terimakasih!", 0Dh, 0Ah, "$"
+LaptopE         DB "  Anda memilih Laptop E.  terimakasih!", 0Dh, 0Ah, "$"
+Nope            DB "  Input tidak valid. Silakan masukkan nomor antara 1 dan 5.  mohon restart applikasi", 0Dh, 0Ah, "$"
